@@ -10,9 +10,16 @@
 #include <string.h>
 #include "questions.h"
 
+
 // Initializes the array of questions for the game
 void initialize_game(void)
 {
+	questions[0].category="programming";
+	questions[0].question="";
+	questions[0].answer="";
+	questions[0].value=100;
+	questions[0].answered=false;
+	
     // initialize each question struct and assign it to the questions array
 }
 

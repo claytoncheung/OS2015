@@ -10,7 +10,7 @@
 
 #include <stdbool.h>
 
-#define MAX_LEN 256
+#define MAX_LEN 4 //Originally 256
 
 // List of 3 categories as array of strings
 static char categories[3][MAX_LEN] = {"programming", "algorithms", "databases"};
