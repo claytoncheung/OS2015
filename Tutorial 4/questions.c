@@ -14,6 +14,7 @@
 // Initializes the array of questions for the game
 void initialize_game(void)
 {
+	  // initialize each question struct and assign it to the questions array
 	questions[0].category="Programming"; questions[0].question=""; questions[0].answer=""; questions[0].value=200; questions[0].answered=false;
 	questions[1].category="Programming"; questions[1].question=""; questions[1].answer=""; questions[1].value=400; questions[1].answered=false;
 	questions[2].category="Programming"; questions[2].question=""; questions[2].answer=""; questions[2].value=600; questions[2].answered=false;
@@ -28,37 +29,82 @@ void initialize_game(void)
 	questions[9].category="Databases"; questions[9].question=""; questions[9].answer=""; questions[9].value=400; questions[9].answered=false;
 	questions[10].category="Databases"; questions[10].question=""; questions[10].answer=""; questions[10].value=600; questions[10].answered=false;
 	questions[11].category="Databases"; questions[11].question=""; questions[11].answer=""; questions[11].value=800 questions[11].answered=false;
-    // initialize each question struct and assign it to the questions array
 }
 
 // Displays each of the remaining categories and question dollar values that have not been answered
 void display_categories(void)
 {
     // print categories and dollar values for each unanswered question in questions array
-	int i=0;	
+	int i;	
 	printf("Category\tValue")
-	for(i=0;i<NUM_QUESTIONS;i++)
-		if questions[i].answered=false{
+	for(i=0;i<NUM_QUESTIONS;i++) {
+		if questions[i].answered=false	{
 			printf("%s\t $%d", questions[i].category, questions[i].value);
 		}
+	}
 }
 
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-
+	int qNum; 						//Used as a placeholder to determine the correct index
+	switch(category){				//Determine which category, and thus which range of indexes to use (i.e. 0-3 for Programming, 4-7 for Algorithms, 8-11 for Databses)
+		case 'Programming' :
+			qNum = 0; break;
+		case 'Algorithms' :
+			qNum = 4; break;
+		case 'Databases' :
+			qNum = 8; break;
+	}	
+	switch(value) {					//Check which value is used, determine precisely which index to use
+		case 200 :
+			break;
+		case 400 :
+			qNum += 1; break;
+		case 600 :
+			qNum += 2; break;
+		case 800 : 
+			qNum += 3; break;
+	}
+	
+	printf("For $d, %s", questions[qNum].value, questions[qNum].question);
 }
 
 // Returns true if the answer is correct for the question for that category and dollar value
 bool valid_answer(char *category, int value, char *answer)
 {
     // Look into string comparison functions
+	
+	
     return false;
 }
 
 // Returns true if the question has already been answered
 bool already_answered(char *category, int value)
 {
-    // lookup the question and see if it's already been marked as answered
-    return false;
+	// lookup the question and see if it's already been marked as answered
+	int qNum; 						//Used as a placeholder to determine the correct index
+	switch(category){				//Determine which category, and thus which range of indexes to use (i.e. 0-3 for Programming, 4-7 for Algorithms, 8-11 for Databses)
+		case 'Programming' :
+			qNum = 0; break;
+		case 'Algorithms' :
+			qNum = 4; break;
+		case 'Databases' :
+			qNum = 8; break;
+	}	
+	switch(value) {					//Check which value is used, determine precisely which index to use
+		case 200 :
+			break;
+		case 400 :
+			qNum += 1; break;
+		case 600 :
+			qNum += 2; break;
+		case 800 : 
+			qNum += 3; break;
+	}
+	
+	if questions[qNum].answered=true
+		return true;
+	else
+		return false;
 }
