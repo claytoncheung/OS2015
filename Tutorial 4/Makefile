@@ -1,4 +1,4 @@
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
 LFLAGS = 
 LIBS = 
@@ -7,7 +7,7 @@ OBJECTS = $(subst .c,.o,$(SOURCES))
 EXE = jeopardy.exe
 .PHONY: clean help
 
-jeopardy.exe : $(OBJECTS)
+jeopardy.exe : jeopardy.o questions.o players.o
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@ 
 
 %.o : %.c
