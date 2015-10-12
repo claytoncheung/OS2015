@@ -47,26 +47,7 @@ void display_categories(void)
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-	int qNum; 						//Used as a placeholder to determine the correct index
-	switch(category){				//Determine which category, and thus which range of indexes to use (i.e. 0-3 for Programming, 4-7 for Algorithms, 8-11 for Databses)
-		case 'Programming' :
-			qNum = 0; break;
-		case 'Algorithms' :
-			qNum = 4; break;
-		case 'Databases' :
-			qNum = 8; break;
-	}	
-	switch(value) {					//Check which value is used, determine precisely which index to use
-		case 200 :
-			break;
-		case 400 :
-			qNum += 1; break;
-		case 600 :
-			qNum += 2; break;
-		case 800 : 
-			qNum += 3; break;
-	}
-	
+	int q=find_question(category, value);	
 	printf("For $d, %s", questions[qNum].value, questions[qNum].question);
 }
 
@@ -74,16 +55,32 @@ void display_question(char *category, int value)
 bool valid_answer(char *category, int value, char *answer)
 {
     // Look into string comparison functions
+	int qNum = find_question(category, value);
+	correctAnswer = questions[qNum].answer;
 	
-	
-    return false;
+	if (strcmp(correctAnswer, answer) == 0)
+		return true;
+	else
+		return false;
 }
 
 // Returns true if the question has already been answered
 bool already_answered(char *category, int value)
 {
 	// lookup the question and see if it's already been marked as answered
+	int q=find_question(category, value);
+	
+	if questions[q].answered=true
+		return true;
+	else
+		return false;
+}
+
+//Returns the index of the question given category and value
+int find_question(char *category, int value)
+{
 	int qNum; 						//Used as a placeholder to determine the correct index
+	
 	switch(category){				//Determine which category, and thus which range of indexes to use (i.e. 0-3 for Programming, 4-7 for Algorithms, 8-11 for Databses)
 		case 'Programming' :
 			qNum = 0; break;
@@ -92,6 +89,7 @@ bool already_answered(char *category, int value)
 		case 'Databases' :
 			qNum = 8; break;
 	}	
+	
 	switch(value) {					//Check which value is used, determine precisely which index to use
 		case 200 :
 			break;
@@ -103,8 +101,5 @@ bool already_answered(char *category, int value)
 			qNum += 3; break;
 	}
 	
-	if questions[qNum].answered=true
-		return true;
-	else
-		return false;
+	return qNum;
 }
