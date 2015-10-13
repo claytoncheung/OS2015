@@ -15,20 +15,20 @@
 void initialize_game(void)
 {
 	  // initialize each question struct and assign it to the questions array
-	questions[0].category="Programming"; questions[0].question=""; questions[0].answer=""; questions[0].value=200; questions[0].answered=false;
-	questions[1].category="Programming"; questions[1].question=""; questions[1].answer=""; questions[1].value=400; questions[1].answered=false;
-	questions[2].category="Programming"; questions[2].question=""; questions[2].answer=""; questions[2].value=600; questions[2].answered=false;
-	questions[3].category="Programming"; questions[3].question=""; questions[3].answer=""; questions[3].value=800; questions[3].answered=false;
+	strcpy(questions[0].category, categories[0]); strcpy(questions[0].question,""); strcpy(questions[0].answer,""); questions[0].value=200; questions[0].answered=false;
+	strcpy(questions[1].category, categories[0]); strcpy(questions[1].question, ""); strcpy(questions[1].answer, ""); questions[1].value=400; questions[1].answered=false;
+	strcpy(questions[2].category, categories[0]); strcpy(questions[2].question, ""); strcpy(questions[2].answer, ""); questions[2].value=600; questions[2].answered=false;
+	strcpy(questions[3].category, categories[0]); strcpy(questions[3].question, ""); strcpy(questions[3].answer, ""); questions[3].value=800; questions[3].answered=false;
 	
-	questions[4].category="Algorithms"; questions[4].question=""; questions[4].answer=""; questions[4].value=200; questions[4].answered=false;
-	questions[5].category="Algorithms"; questions[5].question=""; questions[5].answer=""; questions[5].value=400; questions[5].answered=false;
-	questions[6].category="Algorithms"; questions[6].question=""; questions[6].answer=""; questions[6].value=600; questions[6].answered=false;
-	questions[7].category="Algorithms"; questions[7].question=""; questions[7].answer=""; questions[7].value=800; questions[7].answered=false;
+	strcpy(questions[4].category, categories[1]); strcpy(questions[4].question, ""); strcpy(questions[4].answer, ""); questions[4].value=200; questions[4].answered=false;
+	strcpy(questions[5].category, categories[1]); strcpy(questions[5].question, ""); strcpy(questions[5].answer, ""); questions[5].value=400; questions[5].answered=false;
+	strcpy(questions[6].category, categories[1]); strcpy(questions[6].question, ""); strcpy(questions[6].answer, ""); questions[6].value=600; questions[6].answered=false;
+	strcpy(questions[7].category, categories[1]); strcpy(questions[7].question, ""); strcpy(questions[7].answer, ""); questions[7].value=800; questions[7].answered=false;
 	
-	questions[8].category="Databases"; questions[8].question=""; questions[8].answer=""; questions[8].value=200; questions[8].answered=false;
-	questions[9].category="Databases"; questions[9].question=""; questions[9].answer=""; questions[9].value=400; questions[9].answered=false;
-	questions[10].category="Databases"; questions[10].question=""; questions[10].answer=""; questions[10].value=600; questions[10].answered=false;
-	questions[11].category="Databases"; questions[11].question=""; questions[11].answer=""; questions[11].value=800 questions[11].answered=false;
+	strcpy(questions[8].category, categories[2]); strcpy(questions[8].question, ""); strcpy(questions[8].answer, ""); questions[8].value=200; questions[8].answered=false;
+	strcpy(questions[9].category, categories[2]); strcpy(questions[9].question, ""); strcpy(questions[9].answer, ""); questions[9].value=400; questions[9].answered=false;
+	strcpy(questions[10].category, categories[2]); strcpy(questions[10].question, ""); strcpy(questions[10].answer, ""); questions[10].value=600; questions[10].answered=false;
+	strcpy(questions[11].category, categories[2]); strcpy(questions[11].question, ""); strcpy(questions[11].answer, ""); questions[11].value=800; questions[11].answered=false;	
 }
 
 // Displays each of the remaining categories and question dollar values that have not been answered
@@ -38,7 +38,7 @@ void display_categories(void)
 	int i;	
 	printf("Category\tValue");
 	for(i=0;i<NUM_QUESTIONS;i++) {
-		if (questions[i].answered=false)	{
+		if (questions[i].answered==false)	{
 			printf("%s\t $%d", questions[i].category, questions[i].value);
 		}
 	}
@@ -47,7 +47,7 @@ void display_categories(void)
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-	int qNum =find_question(category, value);
+	int qNum = find_question(category, value);
 	printf("For $d, %s", questions[qNum].value, questions[qNum].question);
 }
 
@@ -56,7 +56,7 @@ bool valid_answer(char *category, int value, char *answer)
 {
     // Look into string comparison functions
 	int qNum = find_question(category, value);
-	char correctAnswer = questions[qNum].answer;
+	char *correctAnswer = questions[qNum].answer;
 	
 	if (strcmp(correctAnswer, answer) == 0)
 		return true;
@@ -70,7 +70,7 @@ bool already_answered(char *category, int value)
 	// lookup the question and see if it's already been marked as answered
 	int q=find_question(category, value);
 	
-	if questions[q].answered=true
+	if (questions[q].answered==true)
 		return true;
 	else
 		return false;
@@ -81,25 +81,21 @@ int find_question(char *category, int value)
 {
 	int qNum; 						//Used as a placeholder to determine the correct index
 	
-	switch(category){				//Determine which category, and thus which range of indexes to use (i.e. 0-3 for Programming, 4-7 for Algorithms, 8-11 for Databses)
-		case 'Programming' :
-			qNum = 0; break;
-		case 'Algorithms' :
-			qNum = 4; break;
-		case 'Databases' :
-			qNum = 8; break;
-	}	
+	if (strcmp(category,"Programming"))
+		qNum=0;
+	else if (strcmp(category,"Algorithms"))
+		qNum=4;
+	else if (strcmp(category,"Databases"))
+		qNum=8;
 	
-	switch(value) {					//Check which value is used, determine precisely which index to use
-		case 200 :
-			break;
-		case 400 :
-			qNum += 1; break;
-		case 600 :
-			qNum += 2; break;
-		case 800 : 
-			qNum += 3; break;
-	}
+	if (value==200)
+		return qNum;
+	else if (value==400)
+		qNum +=1;
+	else if (value==600)
+		qNum +=2;
+	else if (value==800)
+		qNum +=3;
 	
 	return qNum;
 }
