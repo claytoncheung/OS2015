@@ -39,9 +39,10 @@ void display_categories(void)
 	printf("Category\tValue");
 	for(i=0;i<NUM_QUESTIONS;i++) {
 		if (questions[i].answered==false)	{
-			printf("%s\t $%d", questions[i].category, questions[i].value);
+			printf("%s\t $%d\n", questions[i].category, questions[i].value);
 		}
 	}
+	printf("\n");
 }
 
 // Displays the question for the category and dollar value
