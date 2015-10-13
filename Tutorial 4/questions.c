@@ -36,9 +36,9 @@ void display_categories(void)
 {
     // print categories and dollar values for each unanswered question in questions array
 	int i;	
-	printf("Category\tValue")
+	printf("Category\tValue");
 	for(i=0;i<NUM_QUESTIONS;i++) {
-		if questions[i].answered=false	{
+		if (questions[i].answered=false)	{
 			printf("%s\t $%d", questions[i].category, questions[i].value);
 		}
 	}
@@ -47,7 +47,7 @@ void display_categories(void)
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-	int q=find_question(category, value);	
+	int qNum =find_question(category, value);
 	printf("For $d, %s", questions[qNum].value, questions[qNum].question);
 }
 
@@ -56,7 +56,7 @@ bool valid_answer(char *category, int value, char *answer)
 {
     // Look into string comparison functions
 	int qNum = find_question(category, value);
-	correctAnswer = questions[qNum].answer;
+	char correctAnswer = questions[qNum].answer;
 	
 	if (strcmp(correctAnswer, answer) == 0)
 		return true;
