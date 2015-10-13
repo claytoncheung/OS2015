@@ -38,8 +38,10 @@ int main(int argc, char *argv[])
     initialize_game();
 
     // Prompt for players names
-    
+    printf("Please enter the player names (4 names separated by spaces: ");
+
     // initialize each of the players in the array
+    scanf("%s %s %s %s",players[0].name,players[1].name,players[2].name,players[3].name);
 
     // Perform an infinite loop getting command input from users until game ends
     while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
