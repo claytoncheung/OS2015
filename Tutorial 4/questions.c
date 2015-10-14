@@ -57,7 +57,9 @@ bool valid_answer(char *category, int value, char *answer)
 {
     // Look into string comparison functions
 	int qNum = find_question(category, value);
-	char *correctAnswer = questions[qNum].answer;
+	char *correctAnswer = NULL;
+	correctAnswer = (char *) calloc(256, sizeof(char));
+	strcpy(correctAnswer, questions[qNum].answer);
 	
 	if (strcmp(correctAnswer, answer) == 0)
 		return true;
