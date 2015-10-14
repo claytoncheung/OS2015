@@ -1,7 +1,7 @@
 /*
  * Tutorial 4 Jeopardy Project for SOFE 3950U / CSCI 3020U: Operating Systems
  *
- * Copyright (C) 2015, <GROUP MEMBERS>
+ * Copyright (C) 2015, Clayton Cheung, James Morrison, Asmy Sarasan, Malek Mustapha-Abdullah
  * All rights reserved.
  *
  */
@@ -62,8 +62,10 @@ bool valid_answer(char *category, int value, char *answer)
 	strcpy(correctAnswer, questions[qNum].answer);
 	
 	if (strcmp(correctAnswer, answer) == 0)
+		free(correctAnswer);
 		return true;
 	else
+		free(correctAnswer);
 		return false;
 }
 
