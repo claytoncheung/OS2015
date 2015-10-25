@@ -1,0 +1,31 @@
+1) pthread_create() creates a new thread and makes it executable. It can be called any number of times from anywhere within our code
+   pthread_join() is way to accomplish synchronication between threads. This subroutine blocks the calling thread until the specified thread terminates
+   pthread_exit() shall terminate the calling thread making the exit status available to any waiting threads
+
+3) Multithreading refers to an application that has multiple threads running within a process where as multi-processing refrers to an application created across multiple OS-level processes
+Advantages of multithreading:
+  Improved performance and concurrency,
+  Reduced number of services,
+  Simultaneous access to multiple applications
+Disadvantages:
+  Difficulty of writing code
+  Difficulty of debugging and testing
+
+Advantages of multiprocessing:
+  Better economy of scale
+  Increased reliability
+Disadvantages:
+  Failure of one processor affects in the speed
+  Complex OS required
+  Large main memory required
+
+4) If multiple proccesses have shared variables, then each process executing the shared variable excludes all others from doing so simultaneously. This is mutiual exclusion and
+being in the execution of shared variables that requries mutual exlusion is called critical section. No two processes may be at the same moment inside their critical section
+
+5) Mutex locks can be used to perform mutual exclusion:
+It has a boolean variable indicating if the lock is available or not.
+They are used to protect critical regions and prevent race conditions.
+A process must acquire() the lock before entering a critical section and release() when it exits the section.
+
+Semaphore is a more sophisticated tool that can only be accessed visa two atomic operations: wait() and signal()
+THere are two semaphores, counting semaphore and binary semaphore (same as mutex lock)
