@@ -26,7 +26,7 @@ int main(void){
 
 	printf("Please enter the student's grades:\n");
 
-	for(int i = 0;i<9;i++){
+	for(int i = 0;i<10;i++){
 		scanf("%d\n", &grade_in);
 		pthread_create(&student_grades[grade_in], NULL, class_total, (void *)(intptr_t)grade_in);
 		pthread_mutex_lock(&mutex);
