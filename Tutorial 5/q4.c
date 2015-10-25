@@ -29,10 +29,7 @@ int main(void){
 	for(int i = 0;i<10;i++){
 		scanf("%d\n", &grade_in);
 		pthread_create(&student_grades[grade_in], NULL, class_total, (void *)(intptr_t)grade_in);
-		pthread_mutex_lock(&mutex);
-		pthread_mutex_unlock(&mutex);
 	  	pthread_join(student_grades[grade_in], 0);
-	  	pthread_mutex_destroy(&mutex);
 	}
 
 	printf("The total grade is: %d\n", total_grade);
