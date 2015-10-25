@@ -2,6 +2,8 @@
    pthread_join() is way to accomplish synchronication between threads. This subroutine blocks the calling thread until the specified thread terminates
    pthread_exit() shall terminate the calling thread making the exit status available to any waiting threads
 
+2)All threads share the same set of data and can both read and write to another thread's stack. In comparison, each process has its own unique memory and resources. 
+
 3) Multithreading refers to an application that has multiple threads running within a process where as multi-processing refrers to an application created across multiple OS-level processes
 Advantages of multithreading:
   Improved performance and concurrency,
