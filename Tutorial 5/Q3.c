@@ -8,16 +8,16 @@
 void *bellcurve(void *arg)
 {
 	student *s;
-	s = (float*)arg;
+	s = (student*)arg;
 	s->grade *= 1.5;
-    printf("%s %s %f",s->name,s->student_id,s->grade);
+    printf("%s %s %f\n",s->name,s->student_id,s->grade);
     return NULL;
 }
 
 /**
  * Basic example that showing threading interleaving.
  */
-int main(int argc, char *argv[]) {
+int main() {
 
     // Thread object
     pthread_t pth;
@@ -32,8 +32,8 @@ int main(int argc, char *argv[]) {
     strcpy(students[3].name,"Bob3");strcpy(students[3].student_id,"0004");
     strcpy(students[4].name,"Bob4");strcpy(students[4].student_id,"0005");
 
-    printf("Enter 5 grades separated by spaces");
-    scanf("%f %f %f %f %f",students[0].grade,students[1].grade,students[2].grade,students[3].grade,students[4].grade);
+    printf("Enter 5 grades separated by spaces: ");
+    scanf("%f %f %f %f %f",&students[0].grade,&students[1].grade,&students[2].grade,&students[3].grade,&students[4].grade);
 
     // Create the thread.
     pthread_create(&pth, 0, bellcurve, (void *) &students[0]);
