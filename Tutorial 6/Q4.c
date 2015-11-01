@@ -7,8 +7,10 @@
 int buffer[5] = { 0 };
 sem_t sem;
 
-void *producer(int *numbers[]){
+void *producer(void *arg){
 	int count = 0;
+	int *numbers[NUMBERS];
+    *numbers =(int*)arg;
 	while (count < 10){
 		for (int n = 0; n < 5; n++){
 			if (buffer[n] == 0){
@@ -20,12 +22,12 @@ void *producer(int *numbers[]){
 			}
 		}
 
-		usleep(rand(1,100));
+		usleep(rand() % 100 + 1);
 	}
 	return NULL;
 }
 
-void *consumer(){
+void *consumer(void *arg){
 	int count = 0;
 	while (count < 10){
 		for (int n = 0; n < 5; n++){
@@ -37,7 +39,7 @@ void *consumer(){
 				sem_post(&sem);
 			}
 		}
-		usleep(rand(1,100));
+		usleep(rand() % 100 + 1);
 	}
 	return NULL;
 }
@@ -56,8 +58,8 @@ int main(void){
     numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],
 	numbers[5],numbers[6],numbers[7],numbers[8],numbers[9]);
 
-	pthread_create(&pth, 0, producer, (int *) &numbers);
-	pthread_create(&pth2, 0, consumer);
+	pthread_create(&pth, 0, producer, (void *) &numbers);
+	pthread_create(&pth2, 0, consumer, (void *) NULL);
 
 	pthread_join(pth, 0);
 	pthread_join(pth2, 0);
