@@ -29,14 +29,13 @@ void *factorial(void *Num){
 	moving_sum[i] = fact + moving_sum[i-1];
 	sem_post(&sem);
 	}
+	
 	else {
 	sem_wait(&sem);
 	moving_sum[i] = fact;
 	sem_post(&sem);
 	}
-
 	
-
 	return NULL;
 }
 
