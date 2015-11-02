@@ -7,6 +7,7 @@
 		parent process reads sum.txt and prints total sum													*/
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <pthread.h>
@@ -16,13 +17,13 @@ int total_sum = 0;
 sem_t sem;
 
 void *factorial(void *number) {
-	int localNum = (int *) number;
+	int *localNum = (int *) number;
 	//Initializes the factorial to 1 in case of 0!
 	int f = 1;
 	
 	//Calculates the factorial if the number>0
 	if (localNum != 0) {
-		for (int j = localNum; j > 0 ; j--) {
+		for (int j = *localNum; j > 0 ; j--) {
 			f *= j;
 		}
 	}
@@ -31,7 +32,7 @@ void *factorial(void *number) {
 	total_sum += f;
 	sem_post(&sem);
 	// END CRITICAL SECTION
-	printf("%d! = %d", localNum, f);
+	printf("%d! = %d\n", *localNum, f);
 	
 	pthread_exit(NULL);
 }
@@ -46,7 +47,7 @@ int main(){
 	
 	//Reads in the numbers from user and then prints them to numbers.txt
 	printf("Please enter 5 numbers: ");
-	scanf("%d %d %d %d %d", numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]);
+	scanf("%d %d %d %d %d", &numbers[0], &numbers[1], &numbers[2], &numbers[3], &numbers[4]);
 	fprintf(fp, "%d\n%d\n%d\n%d\n%d", numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]);
 	fclose(fp);
 	
@@ -69,7 +70,7 @@ int main(){
 		
 		//create threads
 		for (i = 0; i < 5; i++) {
-			fscanf(fp, "%d", numbers[i]);
+			fscanf(fp, "%d", &numbers[i]);
 			pthread_create(&pth[i], 0, factorial, (void *) &numbers[i]);
 		}
 		
@@ -85,7 +86,7 @@ int main(){
 		//Open sum.txt in write mode
 		fp = fopen (sumFile, "w");
 		//Print total_sum to file
-		fprintf(fp, "The total sum is %d", total_sum);
+		fprintf(fp, "%d", total_sum);
 		fclose(fp);
 		exit(0);
 	}
@@ -98,9 +99,9 @@ int main(){
 		waitpid(PID, NULL, 0);
 
 		//Open sum.txt in read mode
-		fp = fopen *sumFile, "r");
-		fscanf(fp, "%d", sum);
-		printf("The total sum is %d", sum);
+		fp = fopen (sumFile, "r");
+		fscanf(fp, "%d", &sum);
+		printf("The total sum is %d\n", sum);
 		fclose(fp);
 		
 	}
