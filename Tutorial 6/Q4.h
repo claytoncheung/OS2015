@@ -1,5 +1,5 @@
 /*
- * Tutorial 6 Jeopardy Project for SOFE 3950U / CSCI 3020U: Operating Systems
+ * Tutorial 6 Activity for SOFE 3950U / CSCI 3020U: Operating Systems
  *
  * Copyright (C) 2015, Clayton Cheung, James Morrison, Asmy Sarasan, Malek Mustapha-Abdullah
  * All rights reserved.
