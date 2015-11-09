@@ -31,6 +31,7 @@ void push(node_t *head, struct proc process){
 	head = new_node;
 }
 
+//...........................................................................................
 void print_list(node_t *head){
 	node_t *current = head;
 	printf("Name: %s 	Priority: %d 	PID: %d 	Runtime: %d\n", current->process.name, current->process.priority, current->process.pid, current->process.runtime);
@@ -84,10 +85,9 @@ int main(void) {
 			}
 		head->next = NULL;
 		push(head, process);
-		print_list(head);
 	}
 
-	
+	print_list(head);
 
 	fclose(fp);
 	return 0;
