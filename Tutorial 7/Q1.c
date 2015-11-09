@@ -85,9 +85,10 @@ int main(void) {
 			}
 		head->next = NULL;
 		push(head, process);
+		print_list(head);
 	}
 
-	print_list(head);
+	
 
 	fclose(fp);
 	return 0;
