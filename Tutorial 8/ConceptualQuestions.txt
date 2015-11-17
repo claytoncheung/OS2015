@@ -1,0 +1,36 @@
+Conceptual Questions
+
+1. What is an Abstract Data Type?
+   
+   An ADT is a model for data types where a data type is defined by its behavior
+   from the point of view of the user of the data in terms of values and operations.
+
+2. Explain the difference between a queue (FIFO) and a stack (LIFO).
+   
+   In a queue, elements are entered to the last position in the queue, but removal
+   of the elements is done from the first position in the queue. On the other hand,
+   in a stack, elements are added to the last position and removal is also done from
+   the last position.
+
+3. Name and briefly explain three types of data structures.
+
+   Linked List: An ordered sequence of values where each element contains data and a 
+   pointer to the next element.
+   Stack: A data type which uses the last in, first out method to push elements to the collection
+   and pop which removes the last element that was added.
+   Queue: A data type which utilizes the first in, first out method where the first element pushed
+   into the collection is also the first element to be popped out.
+
+4. Explain what a binary tree is, what are some common operations of a binary tree?
+
+   A binary tree is a heirarchical tree structure which has at most two children, the left child and the
+   the right child. Some common operations of a binary tree is inserting nodes, deleting nodes and traversing
+   the tree.
+
+5. Explain what a hash table (dictionary) is, what are common operations of a hash table?
+
+   A hash table is a data structure which is similar to an array, however it has keys that map to values.
+   Common operations for the hash table include adding elements to the table and finding elements using 
+   their unique keys.
+   
+
