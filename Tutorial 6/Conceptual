@@ -1,0 +1,16 @@
+Conceptual Questions
+
+1.	Fork() is used in C language to create a new process also known as child process that can be used to execute a different branch of the program. While forking creates a an identical copy of an existing process that runs the code it copied, creating new threads using pthreads just creates a new thread in the program using shared memory and shared data.
+
+2.	Interprocess communication (IPC) is a set of interfaces that allow a programmer to interconnect activities among different processes to be run at the same time in an operating system. Pipes, message queues are some methods of performing IPC.
+
+3.	It is a synchronization tool that provides more sophisticated ways for processes to synchronize their activities. Semaphore S is an integer variable that can only be accessed via two atomic operations: wait() and signal(). Mutual exclusion happens when multiple proccesses have shared variables and each process executing the shared variable excludes all others from doing so simultaneously.
+
+4.	Wait() and signal(), originally called P() and V() are the 2 atomic operations of semaphore. When one process modifies the semaphore value, no other process can simultaneously modify that same semaphore value. Each process that wishes to use a resource performs a wait() and when a process releases a resource, it performs a signal()
+
+5.	Some functions used for semaphores in semaphore.h would be:
+	sem_open() function is called to establish a connection between a named semaphore and a process.
+	sem_close() function is defined to indicate that the calling process is finished using the named semaphore indicated by ‘sem’
+	sem_wait() function locks the semaphore referenced by ‘sem’ by performing a semaphore lock operation on that semaphore
+	sem_init() function is used to initialise the unnamed semaphore referred to by ‘sem’
+	sem_destroy() function is called to destroy the unnamed semaphore that was created using sem_init()
