@@ -28,6 +28,12 @@ int main(int argc, char *argv[]) {
         return 0;
     } else {
         //Parent process:
+    	FILE *fp = fopen ("child1.txt", "w");
+    	fprintf(fp, "child1\n");
+    	fclose(fp);
+    	FILE *fp1 = fopen ("child2.txt", "w");
+    	fprintf(fp1, "child2\n");
+
         printf("Parent Says Hello\n");
     }
 
