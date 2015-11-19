@@ -1,9 +1,17 @@
+/*
+    This code was executed 3 times per thread count in order to accurately
+    determine the time required to complete the calculations.
+    My laptop with an Intel Core i5-5300U CPU averaged around
+    20.5s on 1 thread, 14.5s on 2 threads, 14.0-14.8s for the rest.
+    It is clear that using two threads is optimal.    
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <omp.h>
 
 int main(int argc, char *argv[]) {
+    double start = omp_get_wtime();
     static int n = 100000000;
     int nthreads;
     float dx, x, y;
@@ -29,4 +37,6 @@ int main(int argc, char *argv[]) {
     }
 
     fclose(fp);
+    double end = omp_get_wtime();
+    printf("Time elapsed: %f", end - start);
 }
