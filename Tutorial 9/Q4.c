@@ -10,15 +10,9 @@ int main(void)
 	int a[n][n], b[n][n], multiplied[n][n];
 
 	for(int i=0;i<n;i++){
-		for(int j=0;i<n;i++){
+		for(int j=0;j<n;j++){
 			a[i][j] = j;
 			b[i][j] = j;
-		}
-	}
-
-	for(int i=0;i<n;i++){
-		for(int j=0;i<n;i++){
-			printf("%d		%d\n", a[i][j], b[i][j]);
 		}
 	}
 
@@ -32,7 +26,6 @@ int main(void)
 			for(int j=0;j<n;j++)
 			{
 				multiplied[i][j] = sum;
-				
 				for(int k=0;k<n;k++)
 				{
 					sum = sum + a[j][k]*b[k][j];
