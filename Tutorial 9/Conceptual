@@ -1,0 +1,24 @@
+Conceptual Questions
+
+1. Explain what OpenMP is, what are it’s benefits?
+   
+   OpenMP is an API that supports multi-platform shared memory multiprocessing programming in C, C++ and
+   Fortran on most platforms. Some benefits include : 
+                                                      Good performance and scalability
+                                                      De-facto and mature standard
+                                                      OpenMP program is portable across different platforms
+                                                      Requires little programming effort
+
+2. What are the #pragma definitions, what do they do?
+
+    The pragma directive is used to access compiler-specific preprocessor extensions.
+    A common use of #pragma is the #pragma once directive, which asks the compiler to include a header file
+    only a single time no matter how many times it has been imported
+
+3. Write the OpenMP #pragma definition to execute a loop in parallel.
+    
+4. What does the reduction do in the #pragma definition in OpenMP?
+    Specifies that one or more variables that are private to each thread are
+    the subject of a reduction operation at the end of the parallel region.
+
+5. Explain the critical and private() declarations used in OpenMP
