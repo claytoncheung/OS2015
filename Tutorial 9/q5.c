@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     static int n = 100000000;
     int nthreads;
     float dx, x, y;
-    dx = 1/(n+1);
+    dx = 1/((double) n+1);                      //Type cast n to double because dx will be 0 otherwise
     FILE *fp = fopen("calculations.txt", "w");
 
     if (argc > 1)
@@ -38,5 +38,5 @@ int main(int argc, char *argv[]) {
 
     fclose(fp);
     double end = omp_get_wtime();
-    printf("Time elapsed: %f", end - start);
+    printf("Time elapsed: %f\n", end - start);
 }
