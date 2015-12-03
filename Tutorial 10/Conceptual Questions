@@ -1,0 +1,22 @@
+1. Explain what MPI is, what are it’s benefits?
+    MPI is a standardized means of exchanging messages between multiple computers running a parallel program across distributed memory.
+    The advantages of MPI over older message passing libraries are portability and speed.
+  	
+2. Explain briefly how MPI supports running on separate computers in a cluster.
+    On distributed parallel systems, like Linux clusters, MPI is widely used. MPI is used to send messages between multiple processes.
+    These processes can be located on the same system or on a collection of distributed servers.
+  	
+3. Name four​MPI data types (hint they all start with MPI_​
+    MPI_CHAR
+    MPI_SHORT
+    MPI_LOGICAL
+    MPI_FLOAT
+  	
+4. Read the documentation for and explain the MPI_Bcast​function.
+    This is used to broadcast a message from the process with rank "root" to all other processes of the communicator.
+    This routine is thread-safe but not interrupt-safe.
+  	
+5. Read the documentation for and explain the MPI_Send and MPI_Recv functions.
+    MPI_send - is used to perform a blocking send. The input parameters are initial address of send buffer, number of elements in send buffer, datatype of buffer element, rank of destination, message tag & communicator
+    MPI_recv - is used for blocking receive for a message. The input parameters are : max count of elements in receive buffer, datatype of each element, rank of source, message tag, communicator. 
+    Both routines are thread-safe
