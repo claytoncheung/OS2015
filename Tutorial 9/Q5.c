@@ -1,3 +1,4 @@
+
 /*
     This code was executed 3 times per thread count in order to accurately
     determine the time required to complete the calculations.
