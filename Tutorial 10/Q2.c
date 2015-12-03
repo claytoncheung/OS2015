@@ -15,6 +15,7 @@ void master(int n_proc)
     double data[DATA_SIZE] = { 0 };
     bool running = true;
     int proc = 0;
+    int n_sent = 0;
     MPI_Status status;
     double starttime, endtime;
 
@@ -30,6 +31,7 @@ void master(int n_proc)
         MPI_Recv(data, DATA_SIZE, MPI_DOUBLE, SLAVE, MPI_ANY_TAG,MPI_COMM_WORLD, &status);
         endtime   = MPI_Wtime();
         printf("Sending->Recieving took %f seconds\n",endtime-starttime);
+        n_sent++;
     }
 }
 
